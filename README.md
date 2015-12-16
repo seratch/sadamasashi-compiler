@@ -1,0 +1,2 @@
+# sadamasashi-compiler
+さだまさしをコンパイルする
