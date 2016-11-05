@@ -142,29 +142,35 @@ object SongCompilerMacro extends LoggerProvider {
           case Some(video) =>
             val uri = new URI(s"https://www.youtube.com/watch?v=${video.getId.getVideoId}")
             Desktop.getDesktop.browse(uri)
-            c.error(c.enclosingPosition,
+            c.error(
+              c.enclosingPosition,
               s"""|
               | "さだまさし ${title}" で YouTube 動画を検索しました。
               | 「${video.getSnippet.getTitle}」(${uri}) がオススメです。
               | しっかりと理解を深めましょう。
-              |""".stripMargin)
-          case _ => c.error(c.enclosingPosition,
+              |""".stripMargin
+            )
+          case _ => c.error(
+            c.enclosingPosition,
             s"""|
             | "さだまさし ${title}" で YouTube 動画を検索しました。
             | オススメの動画が見つかりませんでした。
             | もう一度お試しください。
-            |""".stripMargin)
+            |""".stripMargin
+          )
         }
       case _ =>
         val googleUri = new URI("https://console.developers.google.com/apis/credentials")
         Desktop.getDesktop.browse(googleUri)
-        c.error(c.enclosingPosition,
+        c.error(
+          c.enclosingPosition,
           s"""|
           | 環境変数 GOOGLE_API_KEY に Google の API キーを設定すると無限にさだまさしさんについて学ぶことができます。
           | $googleUri にアクセスして API キーを発行・確認して
           | export GOOGLE_API_KEY={API キーの値}
           | のように設定してください。
-          |""".stripMargin)
+          |""".stripMargin
+        )
     }
     q"_root_.sadamasashi.SadaMasashi"
   }

@@ -19,8 +19,8 @@ I just created a Scala macro library to share lots of people the joy of Scala pr
 ## Install
 
 ```scala
-scalaVersion := "2.11.7"
-libraryDependencies += "com.github.seratch" %% "sadamasashi-compiler" % "0.1"
+scalaVersion := "2.12.0"
+libraryDependencies += "com.github.seratch" %% "sadamasashi-compiler" % "0.2"
 initialCommands := "import sadamasashi._"
 ```
 
